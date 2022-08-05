@@ -1,0 +1,34 @@
+<h1>Bienvenido!!</h1>
+
+<form id="usuarioForm">
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input type="text" name="nombre" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Apellido</label>
+    <input type="text" name="apellido" class="form-control" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+    </tr>
+  </thead>
+  <tbody id="tbody" class="table-info">
+    <tr>
+      <td id="id"></td>
+      <td id="nombre"></td>
+      <td id="apellido"></td>
+    </tr>
+  </tbody>
+</table>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/index.js"></script>

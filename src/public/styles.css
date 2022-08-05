@@ -1,0 +1,10 @@
+*{
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#usuarioForm{
+    display: flex;
+    flex-direction: column;
+}
