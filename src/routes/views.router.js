@@ -6,11 +6,11 @@ let users = await usuarioService.getAll();
 
 const router = Router();
 
-// router.get('/',(req,res)=>{
+router.get('/',(req,res)=>{
 
-//     res.render('users',{
-//         users
-//     })
-// })
+    res.render('users',{
+        // users
+    })
+})
 
 export default router;

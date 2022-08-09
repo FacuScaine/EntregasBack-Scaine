@@ -20,25 +20,21 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.json());
 app.use('/api',usuariosRouter);
-// app.use('/',viewsRouter);
+app.use('/',viewsRouter);
 
 app.engine('handlebars',handlebars.engine());
 app.set('views',__dirname + '/views');
 app.set('view engine','handlebars');
 
+let history = [];
 io.on('connection',socket=>{
-    console.log("socket.io injected")
+    console.log("SocketConnected")
+    // socket.broadcast.emit('newUser')
+    socket.emit('lista',users);
 
-    socket.on('saludo',data=>{
-        console.log(data)
+    socket.on('message',data=>{
+        history.push(data)
+        io.emit('history',history)
     })
 
-    socket.emit('lista',users)
-})
-
-app.get('/',(req,res)=>{
-
-    res.render('users',{
-
-    })
-})
+});

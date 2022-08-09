@@ -1,6 +1,6 @@
 import fs from 'fs'
 //CLASE CONTENEDORA
-const path = 'src/files/usuarios.json';
+const path = 'src/public/usuarios.json';
 
 class UsuarioManager {
 
