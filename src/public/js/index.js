@@ -28,7 +28,7 @@ socket.on('lista', data => {
         .then((data)=>{
             let usuarios = data;
             usuarios.forEach(usuario =>{
-                tabla.innerHTML =`
+                tabla.innerHTML +=`
                 <tr>
                     <td>${usuario.id}</td>
                     <td>${usuario.nombre}</td>
@@ -74,14 +74,3 @@ socket.on('history', data => {
     })
     history.innerHTML = messages
 })
-
-
-// users.forEach(user => {
-//     const table = document.createElement("tr");
-//     aja = table.innerHTML = `
-//     <td>${user.id}</td>
-//     <td>${user.nombre}</td>
-//     <td>${user.apellido}</td>
-//     `
-//     tabla.appendChild(table)
-// });
