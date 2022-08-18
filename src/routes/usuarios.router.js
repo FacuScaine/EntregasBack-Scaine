@@ -1,62 +1,55 @@
 import { Router } from 'express';
-import UsuarioManager from '../managers/usuariosManager.js';
+import db from '../dataBase/useres.db.js';
 
-
-const usuarioService = new UsuarioManager();
 const router = Router();
 
-router.get('/usuarios', (req, res) => {
-    const enviroment = async () => {
-        res.send(
-            await usuarioService.getAll()
-        )
+router.get('/usuarios', async (req, res) => {
+    try {
+        let users = await db('users').select('*');
+        res.send(users);
+    } catch (error) {
+        res.status(500).send("Cannot get users");
     }
-    enviroment()
-
 });
 
-router.get('/usuarios/:ID', (req, res) => {
-    const enviroment = async () => {
+router.get('/usuarios/:ID', async (req, res) => {
+    try {
         let id = req.params.ID
-        let user = await usuarioService.getById(id)
-        if (user === 1) res.status(400).send({error:"El usuario con ese Id no existe"})
+        let user = await db('users').select('*').where('id', '=', id)
         res.send(user)
+    } catch (error) {
+        res.status(404).send("Cannot find id");
     }
-    enviroment()
-
 });
 
-router.post('/usuarios', (req, res) => {
-    const enviroment = async () => {
+router.post('/usuarios', async (req, res) => {
+    try {
         let user = req.body
-        res.send(
-            await usuarioService.save(user)
-        )
+        await db('users').insert(user)
+    } catch (error) {
+        res.status(500).send("Cannot post user");
     }
-    enviroment()
-
 });
 
-router.put('/usuarios/:ID', (req, res) => {
-    const enviroment = async () => {
+router.put('/usuarios/:ID', async(req, res) => {
+    try {
         let id = req.params.ID
         let newUser = req.body
-        let user = await usuarioService.replace(newUser,id)
-        if (user === 1) res.status(400).send({error:"El usuario con ese Id no existe"})
+        await db('users').where('id','=',id).update({nombre: newUser.nombre , apellido: newUser.apellido})
+        res.send(`Usuario ${id} updated`)
+    } catch (error) {
+        res.status(500).send("Cannot update user")
     }
-    enviroment()
-
 });
 
-router.delete('/usuarios/:ID', (req, res) => {
-    const enviroment = async () => {
+router.delete('/usuarios/:ID', async (req, res) => {
+    try {
         let id = req.params.ID
-        let user = await usuarioService.deletById(id)
-        if (user === 1) res.status(400).send({error:"El usuario con ese Id no existe"})
-        res.send(user)
+        let deleted = await db('users').where('id', '=', id).del()
+        res.send(deleted)
+    } catch (error) {
+        res.status(500).send("Cannot delete user")
     }
-    enviroment()
-
 });
 
 

@@ -27,7 +27,6 @@ socket.on('lista', data => {
         .then((respuesta)=>respuesta.json())
         .then((data)=>{
             let usuarios = data;
-            console.log(usuarios)
             usuarios.forEach(usuario =>{
                 tabla.innerHTML =`
                 <tr>
