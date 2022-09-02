@@ -20,10 +20,10 @@ const handleSubmit = (evt, form, route) => {
 usuarioForm.addEventListener('submit', (e) => { handleSubmit(e, e.target, '/api/usuarios'); });
 
 socket.on('lista', data => {
-
     let tabla = document.getElementById('tbody');
+    tabla.innerHTML= ""
     
-        fetch('../usuarios.json')
+        fetch('http://localhost:8080/api/usuarios')
         .then((respuesta)=>respuesta.json())
         .then((data)=>{
             let usuarios = data;

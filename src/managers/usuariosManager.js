@@ -1,15 +1,13 @@
-import fs from 'fs'
 //CLASE CONTENEDORA
-const path = 'src/public/usuarios.json';
+import db from "../dataBase/useres.db.js";
 
 class UsuarioManager {
 
     getAll = async () => {
         try {
-            if (fs.existsSync(path)) {
-                let fileData = await fs.promises.readFile(path, 'utf-8');
-                let usuarios = JSON.parse(fileData)
-                return usuarios;
+            if (db) {
+                let users = await db('users').select('*');
+                return users;
             }else{
                 return [];
             }} catch (error) {console.log("error" +error)};
