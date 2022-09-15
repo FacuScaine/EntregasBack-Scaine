@@ -1,24 +1,12 @@
 <h1>Bienvenido!!</h1>
 
-<form id="usuarioForm">
-  <div class="mb-3">
-    <label class="form-label">Nombre</label>
-    <input type="text" name="nombre" class="form-control" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Apellido</label>
-    <input type="text" name="apellido" class="form-control" required>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
 
 <table class="table">
   <thead class="table-dark">
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Description</th>
     </tr>
   </thead>
   <tbody id="tbody" class="table-info">
@@ -27,6 +15,34 @@
 
 <hr>
 
+<form id="usuarioForm" class="d-flex flex-row justify-content-around"> 
+  <div class="">
+    <label class="form-label">Nombre</label>
+    <input type="text" name="nombre" class="form-control">
+  </div>
+  <div class="">
+    <label class="form-label">Apellido</label>
+    <input type="text" name="apellido" class="form-control">
+  </div>
+  <div class="">
+    <label class="form-label">Edad</label>
+    <input type="number" name="edad" class="form-control">
+  </div>
+  <div class="">
+    <label class="form-label">UserName</label>
+    <input type="text" name="userName" class="form-control">
+  </div>
+  <div class="">
+    <label class="form-label">Email</label>
+    <input type="text" name="email" class="form-control">
+  </div>
+  <div class="">
+    <label class="form-label">Avatar</label>
+    <input type="text" name="avatar" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
 <div class="chat">
   <h2>Virtual Chat!</h2>
   <input id="chatbox" type="text" class="form-control">
